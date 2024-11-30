@@ -1,0 +1,105 @@
+{
+    "version": "2.0.0",
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "group": "test",
+        "showReuseMessage": true,
+        "clear": false
+    },
+    "tasks": [
+		{
+			"type": "npm",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"group": "groupName",
+				"clear": false
+			},
+			"script": "start",
+			"path": "todo/todo-ui",
+			"problemMatcher": [],
+			"label": "npm start",
+			"detail": "react-scripts start"
+		},
+		{
+			"type": "shell",
+			"label": "Django",
+            "dependsOn":[
+                "Django migrate"
+            ],
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"group": "groupName",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"command": "${command:python.interpreterPath}",
+			"args": [
+				"${workspaceFolder}/todo/manage.py",
+				"runserver"
+			]
+		},
+        {
+			"type": "shell",
+			"label": "Django migrate",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"group": "groupName",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"command": "${command:python.interpreterPath}",
+			"args": [
+				"${workspaceFolder}/todo/manage.py",
+				"migrate"
+			]
+		},
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "todo/todo-ui",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build - todo/todo-ui",
+			"detail": "react-scripts build"
+		},
+        {
+            "type": "shell",
+            "label": "Git Terminal",
+            "detail": "A git terminal window to stage and commit work.",
+            "command": "zsh",
+            "linux": "fish",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "group": "groupName",
+                "clear": false
+            }
+        },
+		{
+			"label": "Run app",
+			"dependsOrder": "parallel",
+			"dependsOn": [
+				"npm start",
+                "Django migrate",
+				"Django",
+                "Git"
+			]
+		}
+    ]
+}
