@@ -7,7 +7,12 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hello Dorothy!!
+          Hello Dorothy and Ruth!!
+          <br />
+          Your father loves you so much. Nothing you could do would change that.
+
+          <br />
+          Now how do I convert this to typescript?
         </p>
         <a
           className="App-link"
